@@ -180,7 +180,7 @@ const memory = () => {
   const cache = Object.create(null)   // 利用闭包的特性，保留一个Object用于缓存函数返回值
   return (target, name, descriptor) => {
     const method = descriptor.value
-    descriptor.value = (...args) => {
+    descriptor.value = function(...args) {
       const key = args.join('')
       if (cache[key]) {
         return cache[key]
